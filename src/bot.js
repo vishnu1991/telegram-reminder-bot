@@ -42,14 +42,8 @@ class Bot {
     }
 
     constructor(token, IP, port, key, cert) {
-        this.bot = new TelegramBot(token, {
-            webHook: {
-                port: port,
-                key: key,
-                cert: cert
-            }
-        });
-        this.bot.setWebHook(IP + ':' + port + '/bot' + token, cert);
+        this.bot = new TelegramBot(token, {polling: true});
+       // this.bot.setWebHook(IP + ':' + port + '/bot' + token, cert);
         this.botname = 'unknown';
         this.reminders = {};
         this.waiting = {};
